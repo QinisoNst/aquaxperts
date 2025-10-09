@@ -1,0 +1,87 @@
+.water-quality-page {
+  padding: 2rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.water-quality-page h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.water-quality-page p {
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+/* Dashboard Cards */
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.card-value {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+  font-weight: bold;
+}
+
+.card-footer {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.status-normal {
+  color: #0288d1;
+}
+
+.status-warning {
+  color: #d32f2f;
+}
+
+/* Chart */
+.chart-container {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Table */
+.table-container {
+  overflow-x: auto;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container th,
+.table-container td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.table-container th {
+  background-color: #f0f0f0;
+}
+
+.table-container .status {
+  font-weight: bold;
+}

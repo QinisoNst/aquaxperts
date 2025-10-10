@@ -18,11 +18,12 @@ const Navbar: React.FC = () => {
       {/* Desktop Navigation Links */}
       <ul className="navbar-links">
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/WaterQuality">Water Quality</Link></li>
-        <li><Link to="/tank-analytics">Tank Levels</Link></li>
+        <li><Link to="/location/water-quality">Water Quality</Link></li>
+        <li><Link to="/location/tank-analytics">Tank Levels</Link></li>
+        <li><Link to="/location/water-leaks">Water Leaks</Link></li>
         <li><Link to="/reports">Reports</Link></li>
         <li><Link to="/community">Community</Link></li>
-        <li><Link to="/about">About Us</Link></li>
+        <li><Link to="/about-us">About Us</Link></li>
       </ul>
 
       {/* Login Button */}
@@ -55,11 +56,12 @@ const Navbar: React.FC = () => {
       {menuOpen && (
         <ul className="navbar-links-mobile">
           <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
-          <li><Link to="/water-quality" onClick={() => setMenuOpen(false)}>Water Quality</Link></li>
-          <li><Link to="/tank-levels" onClick={() => setMenuOpen(false)}>Tank Levels</Link></li>
+          <li><Link to="/location/water-quality" onClick={() => setMenuOpen(false)}>Water Quality</Link></li>
+          <li><Link to="/location/tank-analytics" onClick={() => setMenuOpen(false)}>Tank Levels</Link></li>
+          <li><Link to="/location/water-leaks" onClick={() => setMenuOpen(false)}>Water Leaks</Link></li>
           <li><Link to="/reports" onClick={() => setMenuOpen(false)}>Reports</Link></li>
           <li><Link to="/community" onClick={() => setMenuOpen(false)}>Community</Link></li>
-          <li><Link to="/about" onClick={() => setMenuOpen(false)}>About Us</Link></li>
+          <li><Link to="/about-us" onClick={() => setMenuOpen(false)}>About Us</Link></li>
           <li><Button variant="primary" onClick={() => setMenuOpen(false)}>Login</Button></li>
         </ul>
       )}

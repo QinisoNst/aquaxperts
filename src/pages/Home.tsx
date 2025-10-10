@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Droplet, Waves, GlassWater } from "lucide-react";
 import Button from "../components/ui/button";
-import DashboardCard from "../components/DashboardCard"
+import DashboardCard from "../components/DashboardCard";
+import Chatbot from "../components/Chatbot";
+import waterFlow from '../components/assets/water.jpg';
+
+import "../components/Chatbot.css";
+
 const Home: React.FC = () => {
+  const [isChatbotOpen, setChatbotOpen] = useState(false);
+
   return (
     <div className="font-sans text-gray-800 min-h-screen flex flex-col">
 
@@ -10,8 +17,7 @@ const Home: React.FC = () => {
       <section
         className="relative bg-cover bg-center h-64 md:h-96 lg:h-[500px]"
         style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1601412436968-18ae83b9b9b4?auto=format&fit=crop&w=1600&q=80')",
+          backgroundImage: `url(${waterFlow})`,
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50 flex flex-col justify-center items-center text-white px-4 text-center">
@@ -19,7 +25,8 @@ const Home: React.FC = () => {
             Welcome to AquaXperts
           </h1>
           <p className="mt-3 text-sm md:text-base lg:text-lg max-w-xl">
-            Save water today by being a member of us to tackle water-related issues
+            Save water today by a member of us to tackle water related isusse
+            Click Join to be part of the
           </p>
           <Button
             variant="primary"
@@ -36,39 +43,36 @@ const Home: React.FC = () => {
           About Us
         </h2>
         <p className="mt-3 text-gray-600 text-sm md:text-base">
-          AquaXperts is a platform offering services such as water level monitoring,
-          water quality assessment, water leak detection, and more. We empower communities
-          to make smarter water management decisions.
+          AquaXperts is a platform where we offer a wide rage of service of issues such as water level, water quality, water leaks and more...
         </p>
       </section>
 
       <section className="py-12 px-6 md:px-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-center items-center">
-  <DashboardCard
-    title="Water Levels"
-    value="78%"
-    footer="Main Reservoir: 45,000L"
-    icon={Droplet}
-    status="normal"
-    link="/tank-analytics"
-  />
-  <DashboardCard
-    title="Water Quality"
-    value="Good"
-    footer="pH: 7.2 | Turbidity: 2.1 NTU"
-    icon={Waves}
-    status="normal"
-    link="/water-quality"
-  />
-  <DashboardCard
-    title="Water Leaks"
-    value={2}
-    footer="1 critical, 1 minor"
-    icon={GlassWater}
-    status="warning"
-    link="/leaks"
-  />
-</section>
-
+        <DashboardCard
+          title="Water Levels"
+          value=""
+          footer=""
+          icon={Droplet}
+          status="normal"
+          link="/location/tank-analytics"
+        />
+        <DashboardCard
+          title="Water Quality"
+          value=""
+          footer=""
+          icon={Waves}
+          status="normal"
+          link="/location/water-quality"
+        />
+        <DashboardCard
+          title="Water Leaks"
+          value="2"
+          footer="1 critical, 1 minor"
+          icon={GlassWater}
+          status="warning"
+          link="/location/water-leaks"
+        />
+      </section>
 
       {/* Feeds Section */}
       <section className="py-12 px-6 md:px-12 bg-gray-50">
@@ -83,12 +87,23 @@ const Home: React.FC = () => {
                 key={i}
                 className="border rounded-md bg-white h-32 shadow-sm hover:shadow-md transition flex items-center justify-center text-gray-600 text-sm"
               >
-                Feed update #{i}
+                
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {!isChatbotOpen && (
+        <button
+          className="chatbot-toggle-button"
+          onClick={() => setChatbotOpen(true)}
+        >
+          ? 
+        </button>
+      )}
+
+      {isChatbotOpen && <Chatbot onClose={() => setChatbotOpen(false)} />}
 
     </div>
   );

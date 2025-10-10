@@ -1,0 +1,10 @@
+.reports-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.reports-header {
+  color: #007bff;
+  text-align: center;
+  margin-bottom: 20px;
+}

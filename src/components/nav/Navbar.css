@@ -1,85 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&family=Montserrat:wght@400;500&display=swap');
+
 .navbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: #088395;
-  color: white;
-  position: relative;
+  justify-content: space-between;
+  background: linear-gradient(to right, #0b8da5, #047889);
+  padding: 0.8rem 2rem;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Logo */
 .navbar-logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
+  text-decoration: none; /* Remove underline */
+  color: #fff; /* Set font color to white */
 }
 
 .navbar-logo img {
-  height: 40px;
+  height: 38px;
 }
 
-.navbar-links {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-}
-
-.navbar-links li a {
-  color: white;
-  text-decoration: none;
+.navbar-title {
+  font-family: 'Comfortaa', cursive;
+  font-size: 1.5rem;
   font-weight: 500;
 }
 
+/* Links */
+.navbar-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.navbar-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 400;
+  transition: opacity 0.2s ease;
+}
+
 .navbar-links li a:hover {
-  text-decoration: underline;
+  opacity: 0.8;
 }
 
-.navbar-login {
-  margin-left: 1rem;
+/* Login Button */
+.login-btn {
+  background-color: #3cc5d7;
+  padding: 0.45rem 1.4rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
 }
 
-.navbar-mobile {
+.login-btn:hover {
+  background-color: #2eb5c7;
+}
+
+/* Toggle (Hamburger) */
+.navbar-toggle {
   display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
 }
 
-/* Mobile Styles */
+.bar {
+  background: #fff;
+  height: 3px;
+  width: 25px;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggle.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.navbar-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.navbar-toggle.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* MOBILE STYLES */
 @media (max-width: 768px) {
-  .navbar-links,
-  .navbar-login {
-    display: none;
-  }
-
-  .navbar-mobile {
-    display: block;
-  }
-
-  .navbar-links-mobile {
-    display: flex;
-    flex-direction: column;
+  .navbar-links {
     position: absolute;
     top: 70px;
     right: 0;
     background: #088395;
-    width: 200px;
+    width: 100%;
+    max-width: 280px;
+    flex-direction: column;
+    align-items: flex-start;
     padding: 1rem;
     gap: 1rem;
-    border-radius: 4px;
-    z-index: 1000;
+    border-radius: 8px 0 0 8px;
+    display: none;
   }
 
-  .navbar-links-mobile li a,
-  .navbar-links-mobile button {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    text-align: left;
-    background: none;
-    border: none;
-    cursor: pointer;
+  .navbar-links.active {
+    display: flex;
   }
 
-  .navbar-links-mobile li a:hover,
-  .navbar-links-mobile button:hover {
-    text-decoration: underline;
+  .navbar-toggle {
+    display: flex;
   }
 }

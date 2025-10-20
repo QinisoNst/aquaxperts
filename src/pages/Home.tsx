@@ -1,96 +1,111 @@
 import React, { useState } from "react";
-import { Droplet, Waves, GlassWater } from "lucide-react";
-import Button from "../components/ui/button";
-import DashboardCard from "../components/DashboardCard";
+import { Link, useLocation } from "react-router-dom";
+import {
+  Droplet,
+  Waves,
+  GlassWater,
+  CircleDollarSign,
+  Calculator,
+  Bot,
+} from "lucide-react";
+import "./Home.css";
 import Chatbot from "../components/Chatbot";
-import waterFlow from '../components/assets/water.jpg';
-
-import "../components/Chatbot.css";
 
 const Home: React.FC = () => {
   const [isChatbotOpen, setChatbotOpen] = useState(false);
+  const location = useLocation();
 
   return (
-    <div className="font-sans text-gray-800 min-h-screen flex flex-col">
-
+    <div className="home-page">
       {/* Hero Section */}
-      <section
-        className="relative bg-cover bg-center h-64 md:h-96 lg:h-[500px]"
-        style={{
-          backgroundImage: `url(${waterFlow})`,
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50 flex flex-col justify-center items-center text-white px-4 text-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold">
-            Welcome to AquaXperts
-          </h1>
-          <p className="mt-3 text-sm md:text-base lg:text-lg max-w-xl">
-            Save water today by a member of us to tackle water related isusse
-            Click Join to be part of the
+      <section className="hero-section">
+        <h1>Welcome to AquaXperts</h1>
+      </section>
+
+      {/* Join Section */}
+      <section className="join-section">
+        <div>
+          <p>
+            Save water today by a member of us to tackle water related issues
           </p>
-          <Button
-            variant="primary"
-            className="mt-5 px-6 py-3 hover:scale-105 transition-transform"
+          <p>Click Join to be part of the our team to better water quality</p>
+        </div>
+        <Link to="/register" className="join-button">
+          Join
+        </Link>
+      </section>
+
+      {/* About Us Section */}
+      <section className="about-us-section">
+        <h2>About Us</h2>
+        <p>
+          AquaXperts is a platform where we offer a wide range of services
+          such as water level, water quality, water leaks and more...
+        </p>
+        <div className="services">
+          <Link
+            to="/location/water-info"
+            state={{ from: location.pathname, openSection: "tank-levels" }}
+            className="service-card"
           >
-            Join
-          </Button>
+            <div className="service-card-icon">
+              <Droplet size={48} />
+            </div>
+            <h3>Water Levels</h3>
+          </Link>
+          <Link
+            to="/location/water-info"
+            state={{ from: location.pathname, openSection: "water-quality" }}
+            className="service-card"
+          >
+            <div className="service-card-icon">
+              <Waves size={48} />
+            </div>
+            <h3>Water Quality</h3>
+          </Link>
+          <Link
+            to="/location/water-info"
+            state={{ from: location.pathname, openSection: "water-leaks" }}
+            className="service-card"
+          >
+            <div className="service-card-icon">
+              <GlassWater size={48} />
+            </div>
+            <h3>Water Leaks</h3>
+          </Link>
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="py-12 px-6 md:px-12 text-center max-w-3xl mx-auto">
-        <h2 className="text-2xl md:text-3xl font-semibold text-teal-700">
-          About Us
-        </h2>
-        <p className="mt-3 text-gray-600 text-sm md:text-base">
-          AquaXperts is a platform where we offer a wide rage of service of issues such as water level, water quality, water leaks and more...
-        </p>
-      </section>
-
-      <section className="py-12 px-6 md:px-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-center items-center">
-        <DashboardCard
-          title="Water Levels"
-          value=""
-          footer=""
-          icon={Droplet}
-          status="normal"
-          link="/location/tank-analytics"
-        />
-        <DashboardCard
-          title="Water Quality"
-          value=""
-          footer=""
-          icon={Waves}
-          status="normal"
-          link="/location/water-quality"
-        />
-        <DashboardCard
-          title="Water Leaks"
-          value="2"
-          footer="1 critical, 1 minor"
-          icon={GlassWater}
-          status="warning"
-          link="/location/water-leaks"
-        />
-      </section>
-
       {/* Feeds Section */}
-      <section className="py-12 px-6 md:px-12 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-teal-700 pb-2 mb-6">
-            <h3 className="text-lg md:text-xl font-semibold text-teal-700">Feeds</h3>
-            <p className="text-teal-700 mt-2 md:mt-0">Community Engagement</p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {[1, 2, 3].map((i) => (
-              <div
-                key={i}
-                className="border rounded-md bg-white h-32 shadow-sm hover:shadow-md transition flex items-center justify-center text-gray-600 text-sm"
-              >
-                
-              </div>
-            ))}
-          </div>
+      <section className="feeds-section">
+        <h2>Feeds</h2>
+        <div className="feed-cards">
+          <div className="feed-card">Community Engagement</div>
+          <div className="feed-card">Community Engagement</div>
+          <div className="feed-card">Community Engagement</div>
+        </div>
+      </section>
+
+      {/* Resources Section */}
+      <section className="resources-section">
+        <h2>Resources</h2>
+        <p>
+          Here are but a few resources you can use in your homes to improve
+          your usage of water, identify leaks, and calculate costs.
+        </p>
+        <div className="resource-cards">
+          <Link to="/water-use-calculator" className="resource-card">
+            <div className="resource-card-icon">
+              <Calculator size={36} />
+            </div>
+            <h4>Water Use Calculator</h4>
+          </Link>
+          <Link to="/water-advisor" className="resource-card">
+            <div className="resource-card-icon">
+              <Bot size={36} />
+            </div>
+            <h4>Water Advisor</h4>
+          </Link>
         </div>
       </section>
 
@@ -99,12 +114,10 @@ const Home: React.FC = () => {
           className="chatbot-toggle-button"
           onClick={() => setChatbotOpen(true)}
         >
-          ? 
+          ?
         </button>
       )}
-
       {isChatbotOpen && <Chatbot onClose={() => setChatbotOpen(false)} />}
-
     </div>
   );
 };

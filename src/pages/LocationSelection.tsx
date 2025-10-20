@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation, Link } from "react-router-dom";
 import "./LocationSelection.css";
 
 const LocationSelection: React.FC = () => {
@@ -8,12 +8,24 @@ const LocationSelection: React.FC = () => {
   const [community, setCommunity] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
-  const { page } = useParams<{ page: string }>();
+  const location = useLocation();
+  const { page, section } = useParams<{ page: string, section?: string }>();
+
+  const from = location.state?.from;
+  const openSection = location.state?.openSection;
 
   const handleNext = () => {
     setSubmitted(true);
-    if (country && province && community && page) {
-      navigate(`/${page}`);
+    if (country && province && community) {
+      if (from === "/") {
+        navigate(`/water-info?community=${community}`, { state: { openSection } });
+      } else if (page && section) {
+        navigate(`/${page}/${section}?community=${community}`, {
+          state: { openSection },
+        });
+      } else if (page) {
+        navigate(`/${page}?community=${community}`, { state: { openSection } });
+      }
     }
   };
 
@@ -53,7 +65,6 @@ const LocationSelection: React.FC = () => {
         <select
           id="province"
           value={province}
-          disabled={!country}
           className={submitted && !province ? "invalid" : ""}
           onChange={(e) => {
             setProvince(e.target.value);
@@ -76,7 +87,6 @@ const LocationSelection: React.FC = () => {
         <select
           id="community"
           value={community}
-          disabled={!province}
           className={submitted && !community ? "invalid" : ""}
           onChange={(e) => setCommunity(e.target.value)}
         >
@@ -93,9 +103,8 @@ const LocationSelection: React.FC = () => {
       <button
         className="next-button"
         onClick={handleNext}
-        disabled={!country || !province || !community}
       >
-        Next
+          Next
       </button>
     </div>
   );

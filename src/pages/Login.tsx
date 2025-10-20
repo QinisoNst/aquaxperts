@@ -1,21 +1,42 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { auth, db } from "../firebase";
 import "./Login.css";
 
 const Login: React.FC = () => {
-  const [email, setEmail] = useState("");
+  const [usernameOrEmail, setUsernameOrEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Basic validation
-    if (email && password) {
-      // In a real application, you would handle authentication here
-      console.log("Logging in with", email, password);
-      navigate("/"); // Redirect to home page after login
-    } else {
-      alert("Please enter email and password");
+    if (!usernameOrEmail || !password) {
+      alert("Please enter username/email and password");
+      return;
+    }
+
+    let email = usernameOrEmail;
+    if (!email.includes("@")) {
+      const usersRef = collection(db, "users");
+      const q = query(usersRef, where("username", "==", usernameOrEmail));
+      const querySnapshot = await getDocs(q);
+
+      if (querySnapshot.empty) {
+        alert("User not found.");
+        return;
+      }
+      email = querySnapshot.docs[0].data().email;
+    }
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      // Navigate to the home page. The routing logic in App.tsx will handle redirection.
+      navigate("/");
+    } catch (error) {
+      console.error("Error logging in:", error);
+      alert("Failed to login. Please check your credentials.");
     }
   };
 
@@ -24,12 +45,12 @@ const Login: React.FC = () => {
       <form className="login-form" onSubmit={handleLogin}>
         <h1>Login</h1>
         <div className="input-group">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="usernameOrEmail">Username or Email</label>
           <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            id="usernameOrEmail"
+            value={usernameOrEmail}
+            onChange={(e) => setUsernameOrEmail(e.target.value)}
             required
           />
         </div>
@@ -46,9 +67,7 @@ const Login: React.FC = () => {
         <button type="submit" className="login-button">
           Login
         </button>
-        <p className="register-link">
-          Don't have an account? <Link to="/register">Register here</Link>
-        </p>
+      
       </form>
     </div>
   );

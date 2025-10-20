@@ -10,8 +10,7 @@ const Footer: React.FC = () => {
         <div className="footer-section">
           <h3>AquaXperts</h3>
           <p>
-            Empowering rural communities with sustainable water solutions
-            through technology and expertise.
+          Empowering rural communities with sustainable water solutions through technology and expertise.
           </p>
         </div>
 
@@ -23,13 +22,13 @@ const Footer: React.FC = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/water-quality">Water Quality</Link>
+              <Link to="/water-info/water-level">Water Levels</Link>
             </li>
             <li>
-              <Link to="/tank-analytics">Tank Levels</Link>
+              <Link to="/water-info/water-quality">Water Quality</Link>
             </li>
             <li>
-              <Link to="/reports">Reports</Link>
+              <Link to="/water-info/water-leaks">Water Leaks</Link>
             </li>
             <li>
               <Link to="/community">Community</Link>
@@ -42,19 +41,16 @@ const Footer: React.FC = () => {
           <h3>Resources</h3>
           <ul>
             <li>
-              <a href="#">Water Conservation Tips</a>
-            </li>
-            <li>
               <a href="#">DIY Leak Detection</a>
             </li>
             <li>
-              <a href="#">Water Quality Standards</a>
+              <a href="#">Leak Cost</a>
             </li>
             <li>
-              <a href="#">Community Guidelines</a>
+              <a href="#">Water Use Calculator</a>
             </li>
             <li>
-              <a href="#">FAQ</a>
+              <a href="#">Water Advisor</a>
             </li>
           </ul>
         </div>
@@ -78,7 +74,7 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; 2025 AquaXperts - Smart Water Solutions for Rural India. All rights reserved.</p>
+        <p>&copy; 2024 AquaXperts - Smart Water Solutions for Rural India. All rights reserved.</p>
       </div>
     </footer>
   );

@@ -1,0 +1,27 @@
+.collapsible-card {
+  border: 1px solid #088395;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  background-color:#ffffff
+}
+
+.card-header {
+  background-color: #088395;
+  padding: 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.card-header h2 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.card-content {
+  padding: 15px;
+  border-top: 1px solid #ffffff;
+}

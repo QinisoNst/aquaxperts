@@ -1,0 +1,217 @@
+/* General Body Styles */
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  background-color: #d6eef0;
+  color: #00353f;
+}
+
+/* Home Page Container */
+.home-page {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  background-image: url('../components/assets/water.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: left;
+  padding: 5rem 2rem;
+  transform: scaleX(-1);
+}
+
+.hero-section h1 {
+  font-family: 'Montserrat', sans-serif;
+  position: relative; font-size: 3rem;
+   margin: 0; 
+   z-index: 1; 
+   color: white;
+   transform: scaleX(-1);
+}
+
+/* Join Section */
+.join-section {
+  background-color: #088395;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.join-section p {
+  font-size: 0.95rem;
+  margin: 0.3rem 0;
+}
+
+.join-button {
+  background-color: white;
+  color: #088395;
+  border: none;
+  padding: 0.6rem 1.3rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.join-button:hover {
+  background-color: #e0f2f1;
+}
+
+/* About Us Section */
+.about-us-section {
+  background-color: #c7e8eb;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.about-us-section h2 {
+  color: #036672;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.about-us-section p {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  font-size: 1rem;
+  color: #00353f;
+}
+
+.services {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.service-card {
+  background-color: white;
+  border: 2px solid #088395;
+  text-align: center;
+  width: 200px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: #00353f;
+}
+
+.service-card:hover {
+  background-color: #088395;
+  color: white;
+}
+
+.service-card-icon {
+  font-size: 2rem;
+  color: #088395;
+}
+
+.service-card:hover .service-card-icon {
+  color: white;
+}
+
+/* Feeds Section */
+.feeds-section {
+  background-color: #088395;
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.feeds-section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.feed-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.feed-card {
+  background-color: white;
+  color: #00353f;
+  border-radius: 4px;
+  width: 250px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Resources Section */
+.resources-section {
+  background-color: #c7e8eb;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.resources-section h2 {
+  color: #036672;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.resources-section p {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  font-size: 1rem;
+}
+
+.resource-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.resource-card {
+  background-color: white;
+  border: 2px solid #088395;
+  text-align: center;
+  width: 180px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: #00353f;
+}
+
+.resource-card:hover {
+  background-color: #088395;
+  color: white;
+}
+
+.resource-card-icon {
+  font-size: 2rem;
+  color: #088395;
+}
+
+.resource-card:hover .resource-card-icon {
+  color: white;
+}
+
+/* Chatbot Button */
+.chatbot-toggle-button {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background-color: #088395;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}

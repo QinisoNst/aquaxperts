@@ -1,49 +1,27 @@
 import React from "react";
-import { Bar } from "react-chartjs-2";
 import {
-  Chart,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
   Tooltip,
   Legend,
-} from "chart.js";
+  ResponsiveContainer,
+} from "recharts";
 import "./WaterQuality.css";
-
-// Register Chart.js components
-Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const WaterQuality: React.FC = () => {
   // Example chart data
-  const chartData = {
-    labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
-    datasets: [
-      {
-        label: "pH Level",
-        data: [7.2, 7.1, 6.9, 7.3, 7.0, 7.2, 7.1],
-        backgroundColor: "#0288d1",
-      },
-      {
-        label: "Turbidity (NTU)",
-        data: [2.1, 3.5, 4.8, 1.8, 2.2, 3.0, 2.5],
-        backgroundColor: "#66bb6a",
-      },
-    ],
-  };
-
-  const chartOptions = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "top" as const,
-      },
-      title: {
-        display: true,
-        text: "Water Quality Trends (Last 7 Days)",
-      },
-    },
-  };
+  const chartData = [
+    { name: "Day 1", "pH Level": 7.2, "Turbidity (NTU)": 2.1 },
+    { name: "Day 2", "pH Level": 7.1, "Turbidity (NTU)": 3.5 },
+    { name: "Day 3", "pH Level": 6.9, "Turbidity (NTU)": 4.8 },
+    { name: "Day 4", "pH Level": 7.3, "Turbidity (NTU)": 1.8 },
+    { name: "Day 5", "pH Level": 7.0, "Turbidity (NTU)": 2.2 },
+    { name: "Day 6", "pH Level": 7.2, "Turbidity (NTU)": 3.0 },
+    { name: "Day 7", "pH Level": 7.1, "Turbidity (NTU)": 2.5 },
+  ];
 
   return (
     <main className="water-quality-page">
@@ -89,7 +67,18 @@ const WaterQuality: React.FC = () => {
 
       {/* Chart */}
       <div className="chart-container">
-        <Bar data={chartData} options={chartOptions} />
+        <h3>Water Quality Trends (Last 7 Days)</h3>
+        <ResponsiveContainer width="100%" height={300}>
+          <BarChart data={chartData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="pH Level" fill="#0288d1" />
+            <Bar dataKey="Turbidity (NTU)" fill="#66bb6a" />
+          </BarChart>
+        </ResponsiveContainer>
       </div>
 
       {/* Recent Water Quality Table */}
@@ -113,7 +102,9 @@ const WaterQuality: React.FC = () => {
               <td>7.2</td>
               <td>2.1</td>
               <td>1.8</td>
-              <td><span className="status status-normal">Good</span></td>
+              <td>
+                <span className="status status-normal">Good</span>
+              </td>
             </tr>
             <tr>
               <td>2025-11-14</td>
@@ -121,7 +112,9 @@ const WaterQuality: React.FC = () => {
               <td>7.1</td>
               <td>3.5</td>
               <td>1.5</td>
-              <td><span className="status status-normal">Good</span></td>
+              <td>
+                <span className="status status-normal">Good</span>
+              </td>
             </tr>
             <tr>
               <td>2025-11-13</td>
@@ -129,7 +122,9 @@ const WaterQuality: React.FC = () => {
               <td>6.9</td>
               <td>4.8</td>
               <td>1.2</td>
-              <td><span className="status status-warning">Monitor</span></td>
+              <td>
+                <span className="status status-warning">Monitor</span>
+              </td>
             </tr>
             <tr>
               <td>2025-11-12</td>
@@ -137,7 +132,9 @@ const WaterQuality: React.FC = () => {
               <td>7.3</td>
               <td>1.8</td>
               <td>2.1</td>
-              <td><span className="status status-normal">Good</span></td>
+              <td>
+                <span className="status status-normal">Good</span>
+              </td>
             </tr>
           </tbody>
         </table>

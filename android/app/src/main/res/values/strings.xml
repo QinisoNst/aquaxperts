@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Aqua-Watch</string>
+    <string name="title_activity_main">Aqua-Watch</string>
+    <string name="package_name">com.aqua.watch</string>
+    <string name="custom_url_scheme">com.aqua.watch</string>
+</resources>

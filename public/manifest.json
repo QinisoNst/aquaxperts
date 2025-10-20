@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "AquaXperts",
+  "name": "AquaXperts: Water Management",
+  "description": "A web application for monitoring water quality and consumption.",
   "icons": [
     {
       "src": "favicon.ico",
